@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днем Рождения!</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ffb6c1, #ffe4e1);
+    text-align: center;
+    font-family: Arial;
+    color: white;
+}
+
+h1 {
+    margin-top: 20vh;
+    font-size: 10vw;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-40px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+button {
+    margin-top: 5vh;
+    padding: 15px 30px;
+    font-size: 5vw;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    color: #ff4e50;
+    cursor: pointer;
+}
+
+.bear {
+    position: absolute;
+    font-size: 8vw;
+    animation: fall linear infinite;
+    cursor: pointer;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); }
+}
+
+.billie {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body onclick="startMusic()">
+
+<h1>🧸💖 С Днюхой! 💖🧸</h1>
+<button onclick="goToVideo()">Смотреть поздравление 🎬</button>
+
+<audio id="bgMusic" src="Billie Eilish.mp3" loop></audio>
+<audio id="bearSound" src="bear.mp3"></audio>
+
+<img src="ailish.jpg" class="billie">
+
+<script>
+function goToVideo() {
+    window.location.href = "Поздравление_с_Днём_Рождения_Мадагаскар_для_ВП.mp4";
+}
+
+function startMusic() {
+    document.getElementById("bgMusic").play();
+}
+
+for (let i = 0; i < 20; i++) {
+    let bear = document.createElement("div");
+    bear.className = "bear";
+    bear.innerHTML = "🧸";
+    bear.style.left = Math.random() * 100 + "vw";
+    bear.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+    bear.onclick = function(event) {
+        event.stopPropagation();
+        document.getElementById("bearSound").play();
+    };
+
+    document.body.appendChild(bear);
+}
+</script>
+
+</body>
+</html>
